@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
-import { filter } from "../reducers/filterReducer";
+import { filterAnecdotes } from "../reducers/filterReducer";
 
 const Filter = () => {
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const text = event.target.value.trim();
-    dispatch(filter(text));
+    dispatch(filterAnecdotes(text));
   };
   const style = {
     marginBottom: 10,
