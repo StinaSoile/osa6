@@ -9,7 +9,6 @@ const filterSlice = createSlice({
         }
     }
 })
-console.log('filterSlice on wtf?!: ', filterSlice)
 
 export const { filterAnecdotes } = filterSlice.actions
 export default filterSlice.reducer

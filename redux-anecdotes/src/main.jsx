@@ -29,9 +29,9 @@ Muuta filter reduserin ja action creatorien määrittely tapahtumaan
 Redux Toolkitin createSlice-funktion avulla. DONE
 
 Ota myös käyttöön Redux DevTools 
-sovelluksen tilan debuggaamisen helpottamiseksi.
+sovelluksen tilan debuggaamisen helpottamiseksi. DONE
 
 6.11 anekdootit, step9
 Muuta myös anekdoottireduserin ja action creatorien määrittely 
-tapahtumaan Redux Toolkitin createSlice-funktion avulla.
+tapahtumaan Redux Toolkitin createSlice-funktion avulla. DONE
  */
