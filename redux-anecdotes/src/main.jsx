@@ -7,31 +7,8 @@ import App from "./App";
 // import filterReducer from "./reducers/filterReducer";
 import store from "./store";
 
-// const store = configureStore({
-//   reducer: {
-//     anecdotes: anecdoteReducer,
-//     filter: filterReducer,
-//   },
-// });
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <App />
   </Provider>
 );
-/*
-6.10 anekdootit, step8
-Asenna projektiin Redux Toolkit. DONE
-Siirrä tämän jälkeen Redux-storen määrittely omaan tiedostoon store.js DONE
-ja hyödynnä sen luonnissa Redux Toolkitin configureStore-funktiota. DONE
-
-Muuta filter reduserin ja action creatorien määrittely tapahtumaan 
-Redux Toolkitin createSlice-funktion avulla. DONE
-
-Ota myös käyttöön Redux DevTools 
-sovelluksen tilan debuggaamisen helpottamiseksi. DONE
-
-6.11 anekdootit, step9
-Muuta myös anekdoottireduserin ja action creatorien määrittely 
-tapahtumaan Redux Toolkitin createSlice-funktion avulla. DONE
- */
