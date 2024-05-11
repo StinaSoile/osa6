@@ -1,31 +1,28 @@
 import { useDispatch } from "react-redux";
-import { createAnecdote } from "../reducers/anecdoteReducer";
+import { createNewAnecdote } from "../reducers/anecdoteReducer";
 import {
-  removeNotification,
   createNotification,
+  removeNotification,
 } from "../reducers/notificationReducer";
-import anecdoteService from "../services/anecdotes";
-
 const AnecdoteForm = () => {
   const dispatch = useDispatch();
-  //   const anecdotes = useSelector((state) => state);
 
-  // const vote = (id) => {
-  //   console.log("vote", id);
-  // };
-
-  const addAnecdote = async (event) => {
+  const addAnecdote = (event) => {
     event.preventDefault();
     const content = event.target.newAnecdote.value;
+    event.target.newAnecdote.value = "";
+
+    createNewNotification(content);
+    dispatch(createNewAnecdote(content));
+  };
+
+  const createNewNotification = (content) => {
     let timeoutId = setTimeout(() => {
       dispatch(removeNotification(""));
-    }, 2000);
+    }, 5000);
     dispatch(
       createNotification({ text: `you created "${content}".`, timeoutId })
     );
-    event.target.newAnecdote.value = "";
-    const anecdote = await anecdoteService.createNew(content);
-    dispatch(createAnecdote(anecdote));
   };
 
   return (
@@ -42,3 +39,10 @@ const AnecdoteForm = () => {
 };
 
 export default AnecdoteForm;
+
+/*
+
+6.17 anekdootit ja backend, step4
+Muuta myös uuden anekdootin luominen tapahtumaan 
+Redux Thunk ‑kirjaston avulla toteutettuihin asynkronisiin actioneihin.
+*/
