@@ -65,16 +65,3 @@ const App = () => {
 };
 
 export default App;
-
-/*
-Notificaatio tehdään nyt näin:
-dispatch(setNotification(`new anecdote '${content}'`))
-setTimeout(() => {
-  dispatch(clearNotification())
-}, 5000)
-
-
-Toteuta action creator,
-joka mahdollistaa notifikaation antamisen seuraavasti:
-dispatch(setNotification(`you voted '${anecdote.content}'`, 10)), missä 10 on aika
-*/
