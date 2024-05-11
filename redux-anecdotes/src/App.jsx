@@ -67,17 +67,14 @@ const App = () => {
 export default App;
 
 /*
+Notificaatio tehdään nyt näin:
+dispatch(setNotification(`new anecdote '${content}'`))
+setTimeout(() => {
+  dispatch(clearNotification())
+}, 5000)
 
-6.16 anekdootit ja backend, step3
-Muuta Redux-storen alustus 
-tapahtumaan Redux Thunk ‑kirjaston avulla toteutettuun 
-asynkroniseen actioniin. DONE
 
-6.17 anekdootit ja backend, step4
-Muuta myös uuden anekdootin luominen tapahtumaan 
-Redux Thunk ‑kirjaston avulla toteutettuihin asynkronisiin actioneihin.
-
-6.18 anekdootit ja backend, step5
-Äänestäminen ei vielä talleta muutoksia backendiin. 
-Korjaa tilanne Redux Thunk ‑kirjastoa hyödyntäen.
+Toteuta action creator,
+joka mahdollistaa notifikaation antamisen seuraavasti:
+dispatch(setNotification(`you voted '${anecdote.content}'`, 10)), missä 10 on aika
 */

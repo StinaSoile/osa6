@@ -1,9 +1,6 @@
 import { useDispatch } from "react-redux";
 import { createNewAnecdote } from "../reducers/anecdoteReducer";
-import {
-  createNotification,
-  removeNotification,
-} from "../reducers/notificationReducer";
+import { setNotification } from "../reducers/notificationReducer";
 const AnecdoteForm = () => {
   const dispatch = useDispatch();
 
@@ -12,17 +9,8 @@ const AnecdoteForm = () => {
     const content = event.target.newAnecdote.value;
     event.target.newAnecdote.value = "";
 
-    createNewNotification(content);
+    dispatch(setNotification(`you created "${content}".`, 5));
     dispatch(createNewAnecdote(content));
-  };
-
-  const createNewNotification = (content) => {
-    let timeoutId = setTimeout(() => {
-      dispatch(removeNotification(""));
-    }, 5000);
-    dispatch(
-      createNotification({ text: `you created "${content}".`, timeoutId })
-    );
   };
 
   return (
@@ -39,10 +27,3 @@ const AnecdoteForm = () => {
 };
 
 export default AnecdoteForm;
-
-/*
-
-6.17 anekdootit ja backend, step4
-Muuta myös uuden anekdootin luominen tapahtumaan 
-Redux Thunk ‑kirjaston avulla toteutettuihin asynkronisiin actioneihin.
-*/
