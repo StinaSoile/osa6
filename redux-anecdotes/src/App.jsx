@@ -13,6 +13,7 @@ const App = () => {
     dispatch(initializeAnecdotes());
   });
 
+  //  DISPATCHIN JA MUUTENKIN FUNKTIOITA KUTSUVIEN FUNKTIOIDEN HAHMOTTAMISTA:
   // const fff = (b) => (c) => (d) => d(c(b()));
 
   // const ggg = function (b) {
