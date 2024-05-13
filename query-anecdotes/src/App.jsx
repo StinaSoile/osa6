@@ -3,8 +3,11 @@ import Notification from "./components/Notification";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { getAnecdotes, createAnecdote, updateAnecdote } from "./requests";
+import NotificationContext from "./NotificationContext";
+import { useContext } from "react";
 
 const App = () => {
+  const [notification, dispatch] = useContext(NotificationContext);
   const newAnecdoteMutation = useMutation({
     mutationFn: createAnecdote,
     onSuccess: () => {
@@ -35,14 +38,29 @@ const App = () => {
   }
 
   const anecdotes = result.data;
+
   const handleVote = (anecdote) => {
-    updateAnecdoteMutation.mutate({ ...anecdote, votes: anecdote.votes + 1 });
-    console.log("vote");
+    updateAnecdoteMutation.mutate(
+      { ...anecdote, votes: anecdote.votes + 1 },
+      { onSuccess: () => notificate("VOTE", anecdote.content) }
+    );
   };
 
   const addAnecdote = (content) => {
-    console.log("skjhfap");
-    newAnecdoteMutation.mutate({ content });
+    newAnecdoteMutation.mutate(
+      { content },
+      {
+        onSuccess: () => notificate("NEW", content),
+        onError: () => notificate("FAIL", content),
+      }
+    );
+  };
+
+  const notificate = (type, anecdote) => {
+    let timeoutId = setTimeout(() => {
+      dispatch({ type: "NONE" });
+    }, 5000);
+    dispatch({ type: type, payload: { anecdote, timeoutId } });
   };
 
   return (
@@ -66,3 +84,29 @@ const App = () => {
 };
 
 export default App;
+
+/*
+6.23
+Toteuta sovelluksen notifikaation tilan hallinta 
+useReducer-hookin ja contextin avulla. 
+Notifikaatio kertoo kun uusi anekdootti luodaan 
+tai anekdoottia äänestetään. 5 sekuntia taas! 
+
+- 5 sekuntia puuttuu vielä
+
+
+6.24
+lisättävän anekdootin sisällön pituus on vähintään 5 merkkiä. 
+Toteuta nyt lisäämisen yhteyteen virheenkäsittely. 
+Käytännössä riittää, että 
+näytät epäonnistuneen lisäyksen yhteydessä käyttäjälle notifikaation
+'too short anecdote, must have length 5 or more'
+Virhetilanne kannattaa käsitellä sille rekisteröidyssä takaisinkutsufunktiossa, 
+ks täältä miten rekisteröit funktion:
+https://tanstack.com/query/latest/docs/react/reference/useMutation
+DONE
+
+sitten palautus, mutta HUOM!!!!!!!!!
+Minulla on vielä hassuja ylimääräisiä kissa-koira-koodeja 
+jotka pitää siivota ennen palautusta!!!!
+*/
