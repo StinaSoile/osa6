@@ -84,29 +84,3 @@ const App = () => {
 };
 
 export default App;
-
-/*
-6.23
-Toteuta sovelluksen notifikaation tilan hallinta 
-useReducer-hookin ja contextin avulla. 
-Notifikaatio kertoo kun uusi anekdootti luodaan 
-tai anekdoottia äänestetään. 5 sekuntia taas! 
-
-- 5 sekuntia puuttuu vielä
-
-
-6.24
-lisättävän anekdootin sisällön pituus on vähintään 5 merkkiä. 
-Toteuta nyt lisäämisen yhteyteen virheenkäsittely. 
-Käytännössä riittää, että 
-näytät epäonnistuneen lisäyksen yhteydessä käyttäjälle notifikaation
-'too short anecdote, must have length 5 or more'
-Virhetilanne kannattaa käsitellä sille rekisteröidyssä takaisinkutsufunktiossa, 
-ks täältä miten rekisteröit funktion:
-https://tanstack.com/query/latest/docs/react/reference/useMutation
-DONE
-
-sitten palautus, mutta HUOM!!!!!!!!!
-Minulla on vielä hassuja ylimääräisiä kissa-koira-koodeja 
-jotka pitää siivota ennen palautusta!!!!
-*/
